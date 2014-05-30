@@ -6,6 +6,8 @@ Compile an ignore file (similar to .gitignore) to a Javascript function that ret
 npm install ignore-file
 ```
 
+[![build status](http://img.shields.io/travis/mafintosh/ignore-file.svg?style=flat)](http://travis-ci.org/mafintosh/ignore-file)
+
 ## Usage
 
 Assuming you have a `.gitignore` file in your current working directory that contains `node_modules` do
