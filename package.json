@@ -1,6 +1,6 @@
 {
   "name": "ignore-file",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Compile an ignore file (similar to .gitignore) to a Javascript function",
   "main": "index.js",
   "scripts": {
