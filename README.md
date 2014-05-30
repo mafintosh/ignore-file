@@ -23,6 +23,13 @@ ignore('.gitignore', function(err, filter) {
 ```
 
 You can also use `ignore.sync(filename)` to synchroniously compile an ignore file
+If the file doesn't exist `null` is returned. This allows you easily implement fallbacks
+
+``` js
+var filter = ignore.sync('.npmignore') || ignore.sync('.gitignore') || ignore.compile('node_modules')
+```
+
+The above will use `.npmignore` if it exists, else `.gitignore` and finally just ignore all `node_modules` folders
 
 ## License
 
