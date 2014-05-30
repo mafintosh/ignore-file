@@ -1,10 +1,12 @@
 var minimatch = require('minimatch')
 var fs = require('fs')
 
-var ignore = function(filename, cb) {
+var ignore = function(filename, def, cb) {
+  if (typeof def === 'function') return ignore(filename, null, def)
   fs.readFile(filename, 'utf-8', function(err, src) {
     if (err && err.code !== 'ENOENT') return cb(err)
-    cb(null, ignore.compile(src || ''))
+    if (err) return cb(null, null)
+    cb(null, ignore.compile(src))
   })
 }
 
@@ -28,12 +30,12 @@ ignore.compile = function(src) {
     })
 }
 
-ignore.sync = function(filename) {
+ignore.sync = function(filename, def) {
   try {
     return ignore.compile(fs.readFileSync(filename, 'utf-8'))
   } catch (err) {
     if (err.code !== 'ENOENT') throw err
-    return ignore.compile('')
+    return null
   }
 }
 
