@@ -25,7 +25,7 @@ ignore.compile = function(src) {
     })
     .reduce(function(a, b) {
       return function(filename) {
-        return a.match(filename) || b.match(filename)
+        return a(filename) || b(filename)
       }
     })
 }

@@ -21,3 +21,11 @@ tape('default value', function(t) {
   t.notOk(filter('meh'))
   t.end()
 })
+
+tape('compile multiple lines', function(t) {
+  var filter = ignore.compile('a\nb\nc')
+  t.ok(filter('a'))
+  t.ok(filter('b'))
+  t.notOk(filter('d'))
+  t.end()
+})
