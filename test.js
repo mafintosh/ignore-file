@@ -30,6 +30,16 @@ tape('compile multiple lines', function(t) {
   t.end()
 })
 
+tape('compile multiple lines with \\r', function(t) {
+  var filter = ignore.compile('a\r\nb\nc\r\nd');
+  t.ok(filter('a'))
+  t.ok(filter('b'))
+  t.ok(filter('c'))
+  t.ok(filter('d'))
+  t.notOk(filter('e'))
+  t.end()
+})
+
 tape('gitignore glob style', function(t) {
   var filter = ignore.compile('test')
   t.ok(filter('test'))
@@ -60,5 +70,4 @@ tape('comments', function(t) {
   t.notOk(filter('test'))
   t.notOk(filter('foo/test'))
   t.end()
-
 })
