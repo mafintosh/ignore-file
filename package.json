@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/mafintosh/ignore-file",
   "dependencies": {
-    "minimatch": "^1.0.0"
+    "minimatch": "^3.0.4"
   },
   "devDependencies": {
-    "tape": "^2.13.1"
+    "tape": "^4.9.0"
   }
 }
