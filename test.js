@@ -49,6 +49,16 @@ tape('gitignore glob style', function(t) {
   t.end()
 })
 
+tape('trailing slashes', function(t) {
+  var filter = ignore.compile('test/')
+  t.ok(filter('test'))
+  t.ok(filter('test/'))
+  t.ok(filter('foo/test'))
+  t.ok(filter('test/foo'))
+  t.ok(filter('bar/test/foo'))
+  t.end()
+})
+
 tape('gitignore inverse style', function(t) {
   var filter = ignore.compile('test\n!foo/test')
   t.ok(filter('test'))

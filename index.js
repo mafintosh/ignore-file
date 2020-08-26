@@ -2,6 +2,11 @@ var minimatch = require('minimatch')
 var fs = require('fs')
 
 var toRegExp = function(pattern) {
+  // remove trailing slashes
+  if (pattern.substr(-1) === '/') {
+    pattern = pattern.substr(0, pattern.length - 1)
+  }
+
   var i = pattern.indexOf('/')
 
   if (i === -1 || i === pattern.length-1) {
